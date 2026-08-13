@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Puente Enterprise provides personal concierge, business support, property assistance and customised travel planning services in Antigua and Barbuda.">
+  <title>Concierge and Business Support in Antigua | Puente Enterprise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:#163a5f;
+      --navy-dark:#0d2944;
+      --blue:#2b6f9f;
+      --gold:#d6a84b;
+      --gold-light:#ecd49a;
+      --sand:#f7f3eb;
+      --cream:#fcfaf6;
+      --charcoal:#25313c;
+      --muted:#667582;
+      --white:#ffffff;
+      --shadow:0 18px 45px rgba(22,58,95,.12);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--charcoal);background:var(--white);line-height:1.7}
+    img{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    .container{width:min(1160px,calc(100% - 40px));margin:auto}
+    .section{padding:96px 0}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--blue);font-size:.82rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
+    .eyebrow:before{content:"";width:34px;height:2px;background:var(--gold)}
+    h1,h2,h3{font-family:Fraunces,Georgia,serif;color:var(--navy-dark);line-height:1.08;margin:0}
+    h1{font-size:clamp(2.65rem,6vw,5.25rem);letter-spacing:-.035em}
+    h2{font-size:clamp(2.15rem,4vw,3.55rem);letter-spacing:-.025em}
+    h3{font-size:1.45rem}
+    p{margin:0;color:var(--muted)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:52px;padding:13px 24px;border:1px solid transparent;border-radius:999px;font-weight:700;transition:.25s ease;cursor:pointer}
+    .btn-primary{background:var(--gold);color:var(--navy-dark);box-shadow:0 10px 25px rgba(214,168,75,.3)}
+    .btn-primary:hover{transform:translateY(-2px);background:#e2b95f}
+    .btn-secondary{border-color:rgba(255,255,255,.55);color:var(--white);background:rgba(255,255,255,.08);backdrop-filter:blur(8px)}
+    .btn-secondary:hover{background:var(--white);color:var(--navy-dark)}
+    .btn-outline{border-color:var(--navy);color:var(--navy);background:transparent}
+    .btn-outline:hover{background:var(--navy);color:var(--white)}
+
+    .topbar{background:var(--navy-dark);color:rgba(255,255,255,.78);font-size:.85rem;padding:8px 0}
+    .topbar .container{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .topbar a:hover{color:var(--gold-light)}
+    header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(22,58,95,.08)}
+    .nav{height:82px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+    .brand{display:flex;align-items:center;gap:13px;font-family:Fraunces,serif;font-size:1.25rem;font-weight:600;color:var(--navy-dark)}
+    .brand img{width:52px;height:52px;object-fit:contain;border-radius:50%}
+    .nav-links{display:flex;align-items:center;gap:25px;font-size:.94rem;font-weight:600;color:#384858}
+    .nav-links a{position:relative}
+    .nav-links a:after{content:"";position:absolute;left:0;right:100%;bottom:-7px;height:2px;background:var(--gold);transition:.25s}
+    .nav-links a:hover:after{right:0}
+    .menu-btn{display:none;border:0;background:none;color:var(--navy);font-size:1.6rem}
+
+    .hero{position:relative;min-height:760px;display:grid;align-items:center;overflow:hidden;background:
+      linear-gradient(90deg,rgba(9,35,58,.94) 0%,rgba(13,41,68,.84) 47%,rgba(13,41,68,.27) 78%),
+      url('https://images.pexels.com/photos/5378707/pexels-photo-5378707.jpeg?auto=compress&cs=tinysrgb&w=1800') center/cover no-repeat}
+    .hero:after{content:"";position:absolute;inset:auto -80px -180px auto;width:430px;height:430px;border:1px solid rgba(255,255,255,.18);border-radius:50%}
+    .hero-content{position:relative;z-index:2;max-width:760px;color:var(--white);padding:96px 0}
+    .hero h1{color:var(--white);max-width:740px}
+    .hero .lead{font-size:1.16rem;max-width:650px;color:rgba(255,255,255,.82);margin:28px 0 34px}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+    .hero-features{display:flex;gap:28px;flex-wrap:wrap;margin-top:52px;color:rgba(255,255,255,.86);font-size:.92rem}
+    .hero-features span{display:flex;align-items:center;gap:9px}
+    .check{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:rgba(214,168,75,.18);color:var(--gold-light)}
+
+    .services{background:var(--cream)}
+    .section-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:48px}
+    .section-head p{max-width:530px}
+    .service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+    .service-card{background:var(--white);padding:32px 27px;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid rgba(22,58,95,.06);transition:.25s}
+    .service-card:hover{transform:translateY(-8px)}
+    .icon{width:58px;height:58px;display:grid;place-items:center;border-radius:17px;background:var(--sand);color:var(--gold);font-size:1.55rem;margin-bottom:24px}
+    .service-card p{margin:13px 0 20px;font-size:.95rem}
+    .text-link{color:var(--blue);font-weight:700;font-size:.92rem}
+
+    .about-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:70px;align-items:center}
+    .image-stack{position:relative;padding:0 50px 50px 0}
+    .image-stack .main-img{width:100%;height:570px;object-fit:cover;border-radius:28px;box-shadow:var(--shadow)}
+    .image-stack .small-img{position:absolute;right:0;bottom:0;width:44%;height:230px;object-fit:cover;border:8px solid var(--white);border-radius:24px;box-shadow:var(--shadow)}
+    .experience-badge{position:absolute;left:-24px;bottom:42px;background:var(--navy);color:var(--white);padding:22px;border-radius:18px;box-shadow:var(--shadow);width:155px;text-align:center}
+    .experience-badge strong{display:block;font-family:Fraunces,serif;font-size:2rem;color:var(--gold-light)}
+    .about-copy>p{margin:25px 0}
+    .benefit-list{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0 34px}
+    .benefit-list span{display:flex;gap:10px;align-items:flex-start;color:#40505e;font-weight:600;font-size:.94rem}
+
+    .why{background:var(--navy);color:var(--white);position:relative;overflow:hidden}
+    .why:before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;border:1px solid rgba(255,255,255,.08);right:-180px;top:-250px}
+    .why h2,.why h3{color:var(--white)}
+    .why .section-head p{color:rgba(255,255,255,.68)}
+    .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative}
+    .why-card{padding:28px;border-radius:20px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1)}
+    .why-card .number{font-family:Fraunces,serif;font-size:1.1rem;color:var(--gold-light);margin-bottom:35px}
+    .why-card p{color:rgba(255,255,255,.67);margin-top:12px;font-size:.94rem}
+
+    .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:48px}
+    .step{position:relative;padding:34px 28px 30px;border-top:1px solid #d9e0e5}
+    .step-number{position:absolute;top:-24px;left:28px;width:48px;height:48px;display:grid;place-items:center;border-radius:50%;background:var(--gold);color:var(--navy-dark);font-weight:800;border:7px solid var(--white)}
+    .step h3{margin:16px 0 12px}
+
+    .travel{background:var(--sand)}
+    .travel-panel{display:grid;grid-template-columns:1fr 1fr;min-height:590px;border-radius:30px;overflow:hidden;background:var(--white);box-shadow:var(--shadow)}
+    .travel-image{background:url('https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;min-height:480px}
+    .travel-copy{padding:70px;display:flex;flex-direction:column;justify-content:center}
+    .travel-copy p{margin:24px 0 30px}
+    .mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px}
+    .mini-stat{padding:16px;background:var(--cream);border-radius:14px;text-align:center}
+    .mini-stat strong{display:block;color:var(--navy);font-size:1.2rem}
+    .mini-stat span{font-size:.76rem;color:var(--muted)}
+
+    .testimonials{background:var(--cream)}
+    .quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:46px}
+    .quote{background:var(--white);padding:32px;border-radius:22px;box-shadow:0 12px 32px rgba(22,58,95,.08)}
+    .stars{color:var(--gold);letter-spacing:3px;margin-bottom:16px}
+    .quote blockquote{margin:0;color:#52616e;font-size:.98rem}
+    .client{display:flex;align-items:center;gap:13px;margin-top:24px}
+    .avatar{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:var(--white);font-weight:700}
+    .client strong{display:block;color:var(--navy-dark)}
+    .client span{font-size:.8rem;color:var(--muted)}
+
+    .cta{padding:92px 0;background:linear-gradient(110deg,rgba(13,41,68,.97),rgba(22,58,95,.89)),url('https://images.pexels.com/photos/7821343/pexels-photo-7821343.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;text-align:center}
+    .cta h2{color:var(--white);max-width:760px;margin:auto}
+    .cta p{color:rgba(255,255,255,.75);max-width:650px;margin:22px auto 30px}
+
+    footer{background:#091f33;color:rgba(255,255,255,.7);padding:72px 0 24px}
+    .footer-grid{display:grid;grid-template-columns:1.4fr .8fr .8fr 1fr;gap:44px}
+    .footer-brand p{margin-top:18px;max-width:360px;color:rgba(255,255,255,.58)}
+    footer h4{color:var(--white);margin:0 0 18px;font-size:1rem}
+    footer ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+    footer a:hover{color:var(--gold-light)}
+    .socials{display:flex;gap:10px;margin-top:22px}
+    .socials a{width:39px;height:39px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.16)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:50px;padding-top:22px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.82rem}
+
+    @media(max-width:980px){
+      .nav-links{position:fixed;inset:82px 0 auto;background:var(--white);padding:26px 20px;display:none;flex-direction:column;box-shadow:var(--shadow)}
+      .nav-links.open{display:flex}.nav>.btn{display:none}.menu-btn{display:block}
+      .service-grid,.why-grid{grid-template-columns:repeat(2,1fr)}
+      .about-grid{grid-template-columns:1fr}.about-copy{order:-1}
+      .travel-panel{grid-template-columns:1fr}.quote-grid{grid-template-columns:1fr 1fr}
+      .footer-grid{grid-template-columns:1.3fr 1fr 1fr}
+    }
+    @media(max-width:700px){
+      .section{padding:72px 0}.topbar .container{justify-content:center;text-align:center}.topbar span:last-child{display:none}
+      .brand span{font-size:1.02rem}.hero{min-height:700px;background-position:62% center}.hero-content{padding:72px 0}
+      .section-head{display:block}.section-head p{margin-top:18px}
+      .service-grid,.why-grid,.process-grid,.quote-grid,.footer-grid{grid-template-columns:1fr}
+      .about-grid{gap:45px}.image-stack{padding-right:25px}.image-stack .main-img{height:430px}.image-stack .small-img{height:170px}
+      .experience-badge{left:10px;bottom:24px;width:130px;padding:14px}
+      .benefit-list{grid-template-columns:1fr}.travel-copy{padding:42px 28px}.mini-stats{grid-template-columns:1fr}
+      .hero-features{gap:14px;flex-direction:column}.footer-bottom{display:block}.footer-bottom span{display:block;margin-top:8px}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">
+      <span>Saint John’s, Antigua &amp; Barbuda</span>
+      <span><a href="mailto:puente.enterprise@gmail.com">puente.enterprise@gmail.com</a> &nbsp; | &nbsp; <a href="tel:+12687806865">+1 (268) 780-6865</a></span>
+    </div>
+  </div>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Puente Enterprise home">
+        <img src="https://puenteenterprise.com/wp-content/uploads/2026/07/logo.png?w=120" alt="Puente Enterprise logo">
+        <span>Puente Enterprise</span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#travel">Travel</a><a href="#testimonials">Testimonials</a><a href="#contact">Contact</a>
+      </nav>
+      <a class="btn btn-outline" href="#contact">Request Assistance</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <span class="eyebrow" style="color:#ecd49a">Concierge service, thoughtfully delivered</span>
+        <h1>Your Trusted Concierge Partner in Antigua &amp; Barbuda</h1>
+        <p class="lead">Personal concierge, business support, property assistance and tailored travel planning designed to save you time and simplify your day.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Request a Consultation <span>→</span></a>
+          <a class="btn btn-secondary" href="#services">Explore Our Services</a>
+        </div>
+        <div class="hero-features">
+          <span><i class="check">✓</i> Personal attention</span>
+          <span><i class="check">✓</i> Reliable local coordination</span>
+          <span><i class="check">✓</i> Discreet professional service</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="services">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="eyebrow">What we do</span><h2>Support built around your life</h2></div>
+          <p>From everyday requests to detailed travel and business arrangements, Puente Enterprise delivers dependable support with care, discretion and local knowledge.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card"><div class="icon">⌁</div><h3>Personal Concierge</h3><p>Errands, appointments, reservations and practical day-to-day assistance tailored to your schedule.</p><a class="text-link" href="#contact">Learn more →</a></article>
+          <article class="service-card"><div class="icon">▣</div><h3>Business Support</h3><p>Reliable administrative and operational support for entrepreneurs, professionals and organisations.</p><a class="text-link" href="#contact">Learn more →</a></article>
+          <article class="service-card"><div class="icon">⌂</div><h3>Property Solutions</h3><p>Property oversight, local coordination, inspections and trusted assistance when you cannot be there.</p><a class="text-link" href="#contact">Learn more →</a></article>
+          <article class="service-card"><div class="icon">✈</div><h3>Travel Concierge</h3><p>Personalised itineraries, transportation, bookings and destination support from arrival to departure.</p><a class="text-link" href="#travel">Learn more →</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="image-stack">
+          <img class="main-img" src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Professional business support meeting">
+          <img class="small-img" src="https://images.pexels.com/photos/261949/pexels-photo-261949.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Luxury property and pool">
+          <div class="experience-badge"><strong>Local</strong><span>knowledge you can rely on</span></div>
+        </div>
+        <div class="about-copy">
+          <span class="eyebrow">About Puente</span>
+          <h2>Your reliable connection to getting things done</h2>
+          <p>Puente means “bridge,” and that is exactly the role we play. We connect clients with trusted services, local resources and seamless coordination so that every detail is handled efficiently.</p>
+          <p>Whether you live in Antigua, manage a business, own property on the island or are planning a visit, our support is shaped around your priorities.</p>
+          <div class="benefit-list">
+            <span><i class="check">✓</i> One trusted point of contact</span>
+            <span><i class="check">✓</i> Tailored service plans</span>
+            <span><i class="check">✓</i> Responsive communication</span>
+            <span><i class="check">✓</i> Professional discretion</span>
+          </div>
+          <a class="btn btn-outline" href="#contact">Discover How We Can Help</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section why">
+      <div class="container">
+        <div class="section-head"><div><span class="eyebrow" style="color:#ecd49a">Why choose us</span><h2>Service that feels personal</h2></div><p>We combine local insight, dependable coordination and thoughtful attention to make every request easier to manage.</p></div>
+        <div class="why-grid">
+          <article class="why-card"><div class="number">01</div><h3>Local Knowledge</h3><p>Antigua and Barbuda-based support backed by an understanding of local services and destinations.</p></article>
+          <article class="why-card"><div class="number">02</div><h3>Personal Attention</h3><p>Each request is handled with care, discretion and attention to your individual preferences.</p></article>
+          <article class="why-card"><div class="number">03</div><h3>Reliable Coordination</h3><p>One trusted contact to organise service providers, schedules, bookings and follow-up.</p></article>
+          <article class="why-card"><div class="number">04</div><h3>Time-Saving Support</h3><p>Practical assistance designed to reduce stress and return valuable time to your day.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head"><div><span class="eyebrow">How it works</span><h2>Simple from the first conversation</h2></div><p>Our process keeps communication clear and ensures your needs are understood before arrangements begin.</p></div>
+        <div class="process-grid">
+          <article class="step"><div class="step-number">1</div><h3>Tell Us What You Need</h3><p>Contact Puente Enterprise and share your request, schedule, preferences and priorities.</p></article>
+          <article class="step"><div class="step-number">2</div><h3>Receive a Tailored Plan</h3><p>We review the details and recommend the service approach that best fits your needs.</p></article>
+          <article class="step"><div class="step-number">3</div><h3>We Handle the Details</h3><p>Arrangements, coordination and follow-up are managed while you remain informed.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section travel" id="travel">
+      <div class="container">
+        <div class="travel-panel">
+          <div class="travel-image" role="img" aria-label="Tropical Antigua resort coastline"></div>
+          <div class="travel-copy">
+            <span class="eyebrow">Travel concierge</span>
+            <h2>Experience Antigua without the planning stress</h2>
+            <p>From airport transfers and accommodation support to dining reservations, personalised itineraries and local experiences, we help make your visit smooth from beginning to end.</p>
+            <div class="mini-stats"><div class="mini-stat"><strong>Tailored</strong><span>itineraries</span></div><div class="mini-stat"><strong>Local</strong><span>recommendations</span></div><div class="mini-stat"><strong>Responsive</strong><span>support</span></div></div>
+            <a class="btn btn-primary" href="#contact">Plan Your Visit</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section testimonials" id="testimonials">
+      <div class="container">
+        <div class="section-head"><div><span class="eyebrow">Client experiences</span><h2>Trusted support, remembered service</h2></div><p>Placeholder testimonials are included below and can be replaced with verified client feedback before launch.</p></div>
+        <div class="quote-grid">
+          <article class="quote"><div class="stars">★★★★★</div><blockquote>“Puente made every part of our visit easier. Transportation, reservations and last-minute changes were handled with professionalism.”</blockquote><div class="client"><div class="avatar">AM</div><div><strong>Andrea M.</strong><span>Travel concierge client</span></div></div></article>
+          <article class="quote"><div class="stars">★★★★★</div><blockquote>“Having one reliable local contact saved us hours of coordination. Communication was clear and the service was extremely dependable.”</blockquote><div class="client"><div class="avatar">JR</div><div><strong>James R.</strong><span>Property support client</span></div></div></article>
+          <article class="quote"><div class="stars">★★★★★</div><blockquote>“The team understood exactly what our business needed and followed through on every detail. The support felt both personal and professional.”</blockquote><div class="client"><div class="avatar">KS</div><div><strong>Karen S.</strong><span>Business support client</span></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="container">
+        <span class="eyebrow" style="color:#ecd49a">Let us simplify the details</span>
+        <h2>Need dependable support in Antigua &amp; Barbuda?</h2>
+        <p>Tell us what you need and we will help create a practical, personalised solution.</p>
+        <div class="hero-actions" style="justify-content:center"><a class="btn btn-primary" href="mailto:puente.enterprise@gmail.com">Email Puente Enterprise</a><a class="btn btn-secondary" href="https://wa.me/12687806865">Message on WhatsApp</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a class="brand" href="#home" style="color:white"><img src="https://puenteenterprise.com/wp-content/uploads/2026/07/logo.png?w=120" alt="Puente Enterprise logo"><span>Puente Enterprise</span></a><p>Professional concierge, business support, property solutions and travel planning services designed to simplify your life.</p><div class="socials"><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="Instagram">◎</a><a href="https://wa.me/12687806865" aria-label="WhatsApp">w</a></div></div>
+        <div><h4>Quick Links</h4><ul><li><a href="#about">About Us</a></li><li><a href="#services">Services</a></li><li><a href="#travel">Travel</a></li><li><a href="#testimonials">Testimonials</a></li></ul></div>
+        <div><h4>Services</h4><ul><li>Personal Concierge</li><li>Business Support</li><li>Property Solutions</li><li>Travel Planning</li></ul></div>
+        <div><h4>Contact</h4><ul><li>Saint John’s, Antigua, W.I.</li><li><a href="tel:+12687806865">+1 (268) 780-6865</a></li><li><a href="mailto:puente.enterprise@gmail.com">puente.enterprise@gmail.com</a></li><li>Mon–Fri: 8:30am–4:30pm</li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="year"></span> Puente Enterprise. All rights reserved.</span><span><a href="#">Privacy Policy</a> &nbsp; | &nbsp; <a href="#">Terms of Service</a></span></div>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn=document.getElementById('menuBtn');
+    const navLinks=document.getElementById('navLinks');
+    menuBtn.addEventListener('click',()=>navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
